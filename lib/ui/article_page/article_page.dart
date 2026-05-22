@@ -6,7 +6,7 @@ class ArticlePage extends StatelessWidget {
   final Summary summary;
   final VoidCallback nextArticle;
   final VoidCallback saveToDB;
-  ArticlePage({
+  const ArticlePage({
     super.key,
     required this.summary,
     required this.nextArticle,
@@ -17,8 +17,12 @@ class ArticlePage extends StatelessWidget {
     return SingleChildScrollView(
       child: Column(
         children: [
-          ArticleWidget(summary: summary),
-          ElevatedButton(onPressed: saveToDB, child: Text("Favorite")),
+          ArticleWidget(
+            titles: summary.titles.normalized,
+            imageSource: summary.originalImage?.source,
+            description: summary.description,
+            extract: summary.extract,
+          ),
         ],
       ),
     );

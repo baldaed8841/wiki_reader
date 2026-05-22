@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:wiki_reader/summary.dart';
 
 class ArticleWidget extends StatelessWidget {
-  final Summary summary;
-  const ArticleWidget({super.key, required this.summary});
+  final String titles;
+  final String? imageSource;
+  final String? description;
+  final String extract;
+  const ArticleWidget({
+    super.key,
+    required this.titles,
+    this.imageSource,
+    this.description,
+    required this.extract,
+  });
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -11,19 +19,19 @@ class ArticleWidget extends StatelessWidget {
       child: Column(
         spacing: 10,
         children: [
-          if (summary.hasImage) Image.network(summary.originalImage!.source),
+          if (imageSource != null) Image.network(imageSource!),
           Text(
-            summary.titles.normalized,
+            titles,
             overflow: TextOverflow.ellipsis,
             style: Theme.of(context).textTheme.displaySmall,
           ),
-          if (summary.description != null)
+          if (description != null)
             Text(
-              summary.description!,
+              description!,
               overflow: TextOverflow.ellipsis,
               style: Theme.of(context).textTheme.displaySmall,
             ),
-          Text(summary.extract),
+          Text(extract),
         ],
       ),
     );

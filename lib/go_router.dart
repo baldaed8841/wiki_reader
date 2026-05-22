@@ -3,25 +3,24 @@ import 'package:flutter/material.dart';
 import 'package:wiki_reader/root_screen.dart';
 import 'package:wiki_reader/ui/article_page/article_screen.dart';
 
-final router = GoRouter(initialLocation: "/random",
+final router = GoRouter(
+  initialLocation: "/random",
   routes: [
     StatefulShellRoute.indexedStack(
-      builder: (context, state, navigationShell) => RootScreen(navigationShell: navigationShell),
-      branches:[
+      builder: (context, state, navigationShell) =>
+          RootScreen(navigationShell: navigationShell),
+      branches: [
         StatefulShellBranch(
-          routes:[
+          routes: [
             GoRoute(
-              path:"/random",
-              builder: (context, state) => ArticleScreen()
+              path: "/random",
+              builder: (context, state) => ArticleScreen(),
             ),
           ],
         ),
         StatefulShellBranch(
-          routes:[
-            GoRoute(
-              path:"/fav",
-              builder: (context, state) => Text('hello')
-            ),
+          routes: [
+            GoRoute(path: "/fav", builder: (context, state) => Text('hello')),
           ],
         ),
       ],

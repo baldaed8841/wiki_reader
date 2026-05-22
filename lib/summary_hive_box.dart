@@ -1,11 +1,9 @@
-import 'package:wiki_reader/summary.dart';
-import 'package:wiki_reader/summary_hive_box.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
-const String summaryHiveBox = 'summaryHiveBox';
+const String articleHiveBox = 'articleHiveBox';
 
-class SummaryHiveBox {
-  static final summaryBox = Hive.box(summaryHiveBox);
+class ArticleHiveBox {
+  static final summaryBox = Hive.box(articleHiveBox);
   static void create(key, summary) {
     summaryBox.put(key, summary);
   }
